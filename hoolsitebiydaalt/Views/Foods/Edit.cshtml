@@ -1,0 +1,143 @@
+﻿@model hoolsitebiydaalt.Models.Food
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    h1 {
+        color: #2e7d32;
+        font-weight: 700;
+        margin-bottom: 25px;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    h4 {
+        color: #4caf50;
+        font-weight: 600;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #81c784;
+        padding-bottom: 8px;
+        text-align: center;
+    }
+
+    form {
+        background-color: #f9fefa;
+        border-radius: 12px;
+        padding: 30px 25px;
+        box-shadow: 0 8px 25px rgba(34, 139, 34, 0.15);
+        max-width: 450px;
+        margin: 0 auto;
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+        form:hover {
+            box-shadow: 0 12px 35px rgba(34, 139, 34, 0.25);
+        }
+
+    .form-group label {
+        font-weight: 600;
+        color: #2f7a2f;
+    }
+
+    .form-control {
+        font-size: 1rem;
+        padding: 10px 14px;
+        border-radius: 8px;
+        border: 1.5px solid #a5d6a7;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .form-control:focus {
+            border-color: #388e3c;
+            box-shadow: 0 0 8px #81c784;
+            outline: none;
+        }
+
+    .text-danger {
+        font-size: 0.85rem;
+        margin-top: 5px;
+        display: block;
+    }
+
+    input[type="submit"].btn-primary {
+        width: 100%;
+        padding: 12px 0;
+        background: linear-gradient(45deg, #43a047, #66bb6a);
+        border: none;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        box-shadow: 0 6px 15px rgba(34, 139, 34, 0.3);
+        transition: background 0.3s ease;
+    }
+
+        input[type="submit"].btn-primary:hover {
+            background: linear-gradient(45deg, #2e7d32, #4caf50);
+        }
+
+    a[asp-action="Index"] {
+        display: inline-block;
+        margin-top: 25px;
+        color: #388e3c;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+        a[asp-action="Index"]:hover {
+            color: #2e7d32;
+            text-decoration: underline;
+        }
+
+ </style>
+
+<h1>Edit</h1>
+
+<h4>Food</h4>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-6 col-sm-8 col-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group mb-3">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="text-center">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

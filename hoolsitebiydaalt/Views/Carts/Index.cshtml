@@ -1,0 +1,48 @@
+﻿@model hoolsitebiydaalt.Models.Cart
+
+@{
+    ViewData["Title"] = "Сагс";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Хэрэглэгч: <strong>@Model.UserName</strong></p>
+
+@if (Model.CartItems != null && Model.CartItems.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Хоол</th>
+                <th>Тоо ширхэг</th>
+                <th>Нэгж үнэ</th>
+                <th>Нийт үнэ</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CartItems)
+            {
+                <tr>
+                    <td>@item.Food.Name</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Food.Price.ToString("0.00")₮</td>
+                    <td>@(item.Quantity * item.Food.Price).ToString("0.00")₮</td>
+                    <td>
+                        <form asp-action="RemoveFromCart" method="post" style="margin:0;">
+                            <input type="hidden" name="cartItemId" value="@item.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm">Устгах</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h4>Нийт дүн: @Model.CartItems.Sum(i => i.Food.Price * i.Quantity).ToString("0.00")₮</h4>
+}
+else
+{
+    <p>Сагс хоосон байна.</p>
+}

@@ -1,0 +1,149 @@
+﻿@model hoolsitebiydaalt.Models.Food
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    h1 {
+        text-align: center;
+        color: #2e7d32;
+        font-weight: 700;
+        margin-bottom: 25px;
+        text-shadow: 1px 1px 2px rgba(34,139,34,0.3);
+    }
+
+    h4 {
+        color: #388e3c;
+        font-weight: 600;
+        margin-bottom: 20px;
+        border-bottom: 3px solid #a5d6a7;
+        padding-bottom: 6px;
+        text-align: center;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+
+    label.control-label {
+        font-weight: 600;
+        color: #2e7d32;
+        margin-bottom: 0.4rem;
+        display: block;
+    }
+
+    input.form-control {
+        font-size: 1rem;
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: 1.5px solid #a5d6a7;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        input.form-control:focus {
+            border-color: #388e3c;
+            box-shadow: 0 0 8px #81c784;
+            outline: none;
+        }
+
+    span.text-danger {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #c62828;
+    }
+
+    input[type="submit"].btn-primary {
+        background: linear-gradient(45deg, #43a047, #66bb6a);
+        border: none;
+        border-radius: 10px;
+        padding: 12px 36px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        display: block;
+        margin: 25px auto 0 auto;
+        width: 100%;
+        max-width: 250px;
+    }
+
+        input[type="submit"].btn-primary:hover {
+            background: linear-gradient(45deg, #2e7d32, #4caf50);
+        }
+
+    a {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        font-weight: 600;
+        color: #388e3c;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+    }
+
+        a:hover {
+            color: #2e7d32;
+            text-decoration: underline;
+        }
+
+    .row {
+        justify-content: center;
+    }
+</style>
+
+<h1>Create</h1>
+
+<h4>Food</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6 col-lg-5">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" placeholder="Жишээ: Цуйван" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" placeholder="Хоолны тайлбар" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" placeholder="Үнэ ₮" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" placeholder="Төрөл" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>  
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
