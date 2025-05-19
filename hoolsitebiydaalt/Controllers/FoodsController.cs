@@ -54,7 +54,7 @@ namespace hoolsitebiydaalt.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,Price,Category,ImageUrl")] Food food)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,Price,Category")] Food food)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace hoolsitebiydaalt.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price,Category,ImageUrl")] Food food)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price,Category")] Food food)
         {
             if (id != food.Id)
             {
